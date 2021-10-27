@@ -1,0 +1,16 @@
+{
+  "name": "discord-bot-node",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "John Torres",
+  "license": "MIT",
+  "dependencies": {
+    "@discordjs/builders": "^0.7.0",
+    "@discordjs/rest": "^0.1.0-canary.0",
+    "commander": "^8.3.0",
+    "discord-api-types": "^0.24.0",
+    "discord.js": "^13.2.0",
+    "moment": "^2.29.1",
+    "node-cron": "^3.0.0"
+  }
+}

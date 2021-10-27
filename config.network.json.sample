@@ -1,0 +1,9 @@
+{
+  "clientId": "",
+  "guildId": "",
+  "token": "",
+  "channels": {
+    "debug": "",
+    "error": ""
+  }
+}

@@ -6,7 +6,11 @@ module.exports = {
     clientId: conf.clientId,
     guildId: conf.guildId,
     channels: {
-        debug: conf.channels.debug,
-        error: conf.channels.error
+        moderator: conf.channels.moderator,
+        voice: conf.channels.voice,
+        shill: conf.channels.shill,
+
+        bot: conf.channels.bot,
+        error: conf.channels.error,
     }
 }

@@ -5,7 +5,6 @@ const execute = function (message) {
 
     console.log('on message?')
     console.log(message)
-    console.log(message.guild.id)
 }
 
 module.exports = {

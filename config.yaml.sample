@@ -1,0 +1,38 @@
+debug: true
+clientId: "clientId"
+guildId: "guildId"
+token: "token"
+notifyChannels:
+  moderator: "channelId"
+  voice: "channelId"
+  shill: "channelId"
+  bot: "channelId"
+  error: "channelId"
+globalChannels:
+  eng: "channelId"
+  cmn: "channelId"
+  kor: "channelId"
+  other: "903393634609659924"
+lang:
+  default: "eng"
+  eng:
+    - "channelId"
+    - "channelId"
+  cmn:
+    - "channelId"
+    - "channelId"
+  excepts:
+    - "channelId"
+    - "channelId"
+
+googleCloud:
+  projectId: "projectId"
+
+translateLanguages:
+  eng: "en"
+  cmn: "zh"
+  kor: "ko"
+
+autoTranslateRoles:
+  - "roleId"
+  - "roleId"

@@ -1,13 +1,16 @@
-const {client, channels} = require('../utils/bot')
+const {notifyChannels} = require('../utils/bot')
 const {MessageEmbed} = require("discord.js");
 
-module.exports = async function () {
+module.exports = async function (client) {
     console.log(`Logged in as ${client.user.tag}`);
+
+    const channel = notifyChannels['bot']
+    if (!channel) return;
 
     const msg = new MessageEmbed().setColor('#F43F5E')
         .setTitle(`On-board...`)
         .setDescription(`And I will send **heart-beat** every **5 minutes**...`)
         .setTimestamp()
 
-    channels.bot.send({embeds: [msg]})
+    await channel.send({embeds: [msg]})
 }

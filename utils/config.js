@@ -1,16 +1,7 @@
-const options = require('./options')
-const conf = require(`../config.${options.network}.json`)
+const fs = require('fs')
+const path = require('path')
+const YAML = require('yaml')
 
-module.exports = {
-    token: conf.token,
-    clientId: conf.clientId,
-    guildId: conf.guildId,
-    channels: {
-        moderator: conf.channels.moderator,
-        voice: conf.channels.voice,
-        shill: conf.channels.shill,
+const file = fs.readFileSync(path.join(path.resolve(), 'config.yaml'), 'utf8')
 
-        bot: conf.channels.bot,
-        error: conf.channels.error,
-    }
-}
+module.exports = YAML.parse(file)

@@ -1,14 +1,14 @@
-const execute = function (message) {
+const messageLanguageReply = require('../actions/messageLanguageReply')
+
+const execute = async function (message) {
     if (message.author.bot) {
         return
     }
 
-    console.log('on message?')
-    console.log(message)
+    await messageLanguageReply(message)
 }
 
 module.exports = {
     name: 'messageCreate',
     execute,
 }
-

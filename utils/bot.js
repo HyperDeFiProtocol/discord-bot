@@ -4,15 +4,8 @@ const config = require('../utils/config')
 
 const cache = new Cache()
 
-// prepare channels
-let channels = {
-    moderator: null,
-    voice: null,
-    shill: null,
-
-    bot: null,
-    error: null,
-}
+let notifyChannels = {}
+let globalChannels = {}
 
 // init client
 const client = new Client({
@@ -37,18 +30,24 @@ const client = new Client({
 
 // on ready
 const onReady = async function () {
-    channels.moderator = client.channels.cache.get(config.channels.moderator)
-    channels.voice = client.channels.cache.get(config.channels.voice)
-    channels.shill = client.channels.cache.get(config.channels.shill)
+    // notifyChannels
+    for (const channelId in config['notifyChannels']) {
+        notifyChannels[channelId] = client.channels.cache.get(config['notifyChannels'][channelId])
+    }
 
-    channels.bot = client.channels.cache.get(config.channels.bot)
-    channels.error = client.channels.cache.get(config.channels.error)
+    // globalChannels
+    for (const channelId in config['globalChannels']) {
+        globalChannels[channelId] = client.channels.cache.get(config['globalChannels'][channelId])
+    }
 }
 client.once('ready', onReady);
 
 // export
 module.exports = {
+    config: config,
+
     cache: cache,
     client: client,
-    channels: channels
+    notifyChannels: notifyChannels,
+    globalChannels: globalChannels
 }

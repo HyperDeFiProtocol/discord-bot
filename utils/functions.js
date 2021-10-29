@@ -10,6 +10,18 @@ const wait = function(timeout = 1000) {
     })
 }
 
+async function importFranc() {
+    const franc = await import('franc')
+    return franc.franc
+}
+
+async function importFrancAll() {
+    const franc = await import('franc')
+    return franc.francAll
+}
+
 module.exports = {
-    wait: wait
+    wait: wait,
+    importFranc: importFranc,
+    importFrancAll: importFrancAll,
 }

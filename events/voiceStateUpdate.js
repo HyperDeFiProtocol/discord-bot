@@ -1,8 +1,11 @@
 const builders = require('@discordjs/builders');
-const {cache, channels} = require('../utils/bot');
+const {cache, notifyChannels} = require('../utils/bot');
 const moment = require("moment");
 
-const execute = function (oldState, newState) {
+const execute = async function (oldState, newState) {
+    const channel = notifyChannels['voice']
+    if (!channel) return;
+
     if (!oldState.channelId && newState.channelId) {
         const key = `voice-channel-joined-timestamp-${newState.member.user.id}-${newState.channelId}`
         cache.set(key, new Date().getTime())
@@ -15,7 +18,7 @@ const execute = function (oldState, newState) {
             + ' `'
             + moment().format('MMM Do HH:mm:ss')
             + ' JOIN`'
-        channels.voice.send(text)
+        await channel.send(text)
     } else if (oldState.channelId) {
         const key = `voice-channel-joined-timestamp-${oldState.member.user.id}-${oldState.channelId}`
         const joinedAt = parseInt(cache.take(key))
@@ -38,7 +41,7 @@ const execute = function (oldState, newState) {
             text += ` - ${seconds} seconds`
         }
 
-        channels.voice.send(text)
+        await channel.send(text)
     }
 }
 

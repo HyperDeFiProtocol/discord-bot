@@ -7,11 +7,16 @@
   "dependencies": {
     "@discordjs/builders": "^0.7.0",
     "@discordjs/rest": "^0.1.0-canary.0",
+    "@google-cloud/translate": "^6.3.1",
     "commander": "^8.3.0",
     "discord-api-types": "^0.24.0",
     "discord.js": "^13.2.0",
+    "franc": "^6.0.0",
+    "google-translate-api": "^2.3.0",
+    "langs": "^2.0.0",
     "moment": "^2.29.1",
     "node-cache": "^5.1.2",
-    "node-cron": "^3.0.0"
+    "node-cron": "^3.0.0",
+    "yaml": "^1.10.2"
   }
 }

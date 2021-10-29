@@ -1,11 +1,11 @@
 const moment = require('moment')
 const dsBuilders = require('@discordjs/builders')
-const {client, channels} = require('../utils/bot')
+const {notifyChannels} = require('../utils/bot')
 
 const execute = async function (interaction) {
     if (!interaction.isCommand()) return
 
-    const command = client.commands.get(interaction.commandName)
+    const command = interaction.client.commands.get(interaction.commandName)
 
     if (!command) return
 
@@ -18,7 +18,10 @@ const execute = async function (interaction) {
             ephemeral: true}
         )
 
-        channels.error.send(`**Error: ${error.message}**\n${dsBuilders.inlineCode(moment().toString())}\n${dsBuilders.codeBlock(error.stack)}`)
+        const errorChannel = notifyChannels['error']
+        if (errorChannel) {
+            await errorChannel.send(`**Error: ${error.message}**\n${dsBuilders.inlineCode(moment().toString())}\n${dsBuilders.codeBlock(error.stack)}`)
+        }
     }
 }
 

@@ -111,7 +111,6 @@ const getGlobalChannelReply = async function (message, targetLang, intendLang) {
             await moderatorChannel.send(
                 `🌎 **Language detected:** ${language}\n`
                 + builders.codeBlock(message.content)
-                // + `\n`
                 + `from ${builders.userMention(message.author.id)} in ${builders.channelMention(message.channelId)}`
             )
         }

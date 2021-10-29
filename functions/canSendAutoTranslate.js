@@ -5,7 +5,6 @@ module.exports = async function (message) {
     if (!roles) return null
 
     for (const roleId of roles) {
-        console.log(roleId)
         if (message.member.roles.cache.has(roleId)) return true
     }
 

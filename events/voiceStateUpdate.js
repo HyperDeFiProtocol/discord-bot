@@ -20,7 +20,7 @@ const execute = async function (oldState, newState) {
             + builders.userMention(newState.member.user.id)
             + ' `'
             + moment().format('MMM Do HH:mm:ss')
-            + ' JOIN`'
+            + ' JOINED`'
         await channel.send(text)
     } else if (oldState.channelId) {
         const key = `voice-channel-joined-timestamp-${oldState.member.user.id}-${oldState.channelId}`

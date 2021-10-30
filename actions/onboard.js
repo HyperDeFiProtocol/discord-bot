@@ -9,7 +9,7 @@ module.exports = async function (client) {
 
     const msg = new MessageEmbed().setColor('#F43F5E')
         .setTitle(`On-board...`)
-        .setDescription(`And I will send **heart-beat** every **5 minutes**...`)
+        .setDescription(`And I will send **heart-beat** every **10 minutes**...`)
         .setTimestamp()
 
     await channel.send({embeds: [msg]})

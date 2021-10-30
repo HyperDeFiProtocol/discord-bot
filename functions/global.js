@@ -60,8 +60,8 @@ const getGlobalChannelId = function (lang) {
 
 const getGlobalChannelReply = async function (message, targetLang, intendLang) {
     let text = ''
-    // const intentChannelId = getGlobalChannelId(intendLang)
-    // if (!intentChannelId) return text
+    const intentChannelId = getGlobalChannelId(intendLang)
+    if (!intentChannelId) return text
 
     if (isGlobalChannelLang(intendLang)) {
         switch (intendLang) {

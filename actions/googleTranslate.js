@@ -1,8 +1,8 @@
-const {Translate} = require('@google-cloud/translate').v2;
-const config = require('../utils/config');
-
+const {Translate: GoogleTranslate} = require('@google-cloud/translate').v2;
+const {config} = require('../utils/bot');
 const googleProjectId = config['googleCloud']['projectId']
-const googleTranslate = new Translate({projectId: googleProjectId});
+const googleTranslate = new GoogleTranslate({projectId: googleProjectId});
+
 
 async function translate(text, targetLang) {
     const languages = config['translateLanguages']
@@ -19,13 +19,9 @@ async function translate(text, targetLang) {
 
     if (!exist) return null;
 
-    const translation = await googleTranslate.translate(text, targetLang).catch(console.error);
+    const [translation] = await googleTranslate.translate(text, targetLang);
 
-    if (translation) {
-        return translation[0]
-    }
-
-    return null
+    return translation
 }
 
 module.exports = translate

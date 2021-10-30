@@ -1,7 +1,6 @@
 const moment = require("moment");
 const builders = require('@discordjs/builders');
-const config = require('../utils/config')
-const {cache, notifyChannels} = require('../utils/bot');
+const {config, cache, notifyChannels} = require('../utils/bot');
 
 const execute = async function (oldState, newState) {
     if (config['debug']) return;

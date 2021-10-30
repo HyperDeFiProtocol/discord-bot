@@ -1,4 +1,4 @@
-const {notifyChannels} = require('../utils/bot')
+const {notifyChannels} = require('../utils/bot');
 const {MessageEmbed} = require("discord.js");
 
 module.exports = async function (client) {

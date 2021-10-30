@@ -1,12 +1,10 @@
 const fn = require('../utils/functions');
 const global = require('../functions/global');
 const canSendAutoTranslate = require('../functions/canSendAutoTranslate');
-const translate = require("../methods/translate");
+const googleTranslate = require("./googleTranslate");
 
 module.exports = async function (message) {
     if (global.isExceptChannel(message.channelId)) return;
-
-    // console.log('messageLanguageReply.js')
 
     const text = message.content.trim()
     if (!text) return;
@@ -25,7 +23,7 @@ module.exports = async function (message) {
     // helper, mod...
     const isHelper = await canSendAutoTranslate(message)
     if (isHelper) {
-        const translation = await translate(text, targetLang)
+        const translation = await googleTranslate(text, targetLang)
         if (translation !== text) await message.reply(`${text}\n👇🏻👇🏻\n\n${translation}`)
         return;
     }

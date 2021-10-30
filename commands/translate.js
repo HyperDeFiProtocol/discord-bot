@@ -1,7 +1,7 @@
 const {SlashCommandBuilder} = require('@discordjs/builders')
 const fn = require('../utils/functions')
 const global = require('../functions/global')
-const translate = require('../methods/translate')
+const translate = require('../actions/googleTranslate')
 
 const execute = async function (interaction) {
     const language = interaction.options.getString('language').trim()

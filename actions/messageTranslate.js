@@ -1,3 +1,4 @@
+const {config} = require('../utils/bot')
 const global = require('../functions/global')
 
 const googleTranslate = require('../actions/googleTranslate');
@@ -10,6 +11,11 @@ const replyTranslateHelp = async function (message) {
 
 
 module.exports = async function (message) {
+    if (config['debug']) {
+        console.log('>>> !translate')
+        return
+    }
+
     const text = message.content.trim()
 
     if (message.reference) {

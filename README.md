@@ -21,11 +21,7 @@ Nav to `BOT` and select `PRESENCE INTENT`, `SERVER MEMBERS INTENT`, `MESSAGE CON
 
 Nav to `OAuth2`, select `bot` and `applications.commands` in `SCOPES`, select `Administrator` in `BOT PERMISSIONS` then copy the URL, visit in your browser, invite the bot to your server.
 
-## Update system environment
+## Google Translate
 
-Append this line to `/etc/environment` file:
-
-```bash
-export GOOGLE_APPLICATION_CREDENTIALS=/path/to/google.application.credentials.json
-```
-
+Follow the steps [@google-cloud/translate](https://github.com/googleapis/nodejs-translate#before-you-begin),
+to create a `credentials file`, rename it as `google.application.credentials.json` and put it in `./`

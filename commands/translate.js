@@ -43,3 +43,5 @@ module.exports = {
         .addStringOption(option => option.setName('text').setRequired(true).setDescription('source text')),
     execute
 }
+
+

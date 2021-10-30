@@ -66,7 +66,7 @@ const getGlobalChannelReply = async function (message, targetLang, intendLang) {
     if (isGlobalChannelLang(intendLang)) {
         switch (intendLang) {
             case 'eng':
-                text = `Please do not use Chinese in this room. For English communication, please go to XXX ${builders.channelMention(intentChannelId)}`
+                text = `Please do not use English in this room. For English communication, please go to XXX ${builders.channelMention(intentChannelId)}`
                 return
             case 'cmn':
                 text = `请不要在此房间使用其它语言。中文交流请到 ${builders.channelMention(intentChannelId)}`

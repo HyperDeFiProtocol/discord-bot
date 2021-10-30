@@ -4,7 +4,6 @@ const global = require('../functions/global')
 const translate = require('../methods/translate')
 
 const execute = async function (interaction) {
-    await interaction.deferReply()
     const language = interaction.options.getString('language').trim()
     const text = interaction.options.getString('text').trim()
     if (!text) {

@@ -10,13 +10,13 @@ const execute = async function (interaction) {
     if (!command) return
 
     try {
+        await interaction.deferReply()
         await command.execute(interaction)
     } catch (error) {
-        console.error(error)
-        await interaction.reply({
+        await interaction.editReply({
             content: 'There was an error while executing this command!',
-            ephemeral: true}
-        )
+            ephemeral: true
+        })
 
         const errorChannel = notifyChannels['error']
         if (errorChannel) {

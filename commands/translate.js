@@ -38,7 +38,7 @@ const execute = async function (interaction) {
 module.exports = {
     data: new SlashCommandBuilder()
         .setName('translate')
-        .setDescription('Replies with translation!')
+        .setDescription('Replies with translation')
         .addStringOption(option => option.setName('language').setRequired(true).setDescription('en, zh, ko, ja,fr, es, de, de, vi'))
         .addStringOption(option => option.setName('text').setRequired(true).setDescription('source text')),
     execute

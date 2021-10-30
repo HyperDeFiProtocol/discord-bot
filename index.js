@@ -1,7 +1,14 @@
-const fs = require("fs")
-const {Collection} = require("discord.js")
-const {client} = require('./utils/bot')
-const config = require('./utils/config')
+const path = require('path');
+const fs = require("fs");
+const {Collection} = require("discord.js");
+const {client} = require('./utils/bot');
+const config = require('./utils/config');
+
+
+// google.application.credentials
+//
+process.env.GOOGLE_APPLICATION_CREDENTIALS = path.join(path.resolve(), 'google.application.credentials.json')
+
 
 // events
 //

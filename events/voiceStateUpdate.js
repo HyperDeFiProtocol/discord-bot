@@ -10,10 +10,11 @@ const execute = async function (oldState, newState) {
 
     const timeString = builders.inlineCode(moment().format('MMM Do HH:mm:ss'))
 
+    /**
+     * join
+     */
+
     if (!oldState.channelId && newState.channelId) {
-        /**
-         * join
-         */
         const key = `voice-channel-joined-timestamp-${newState.member.user.id}-${newState.channelId}`
         cache.set(key, new Date().getTime())
 
@@ -21,10 +22,13 @@ const execute = async function (oldState, newState) {
         text = '🟢 ' + text + ' :: `joined`'
 
         await channel.send(text)
-    } else if (oldState.channelId && !newState.channelId) {
-        /**
-         * left
-         */
+        return null
+    }
+
+    /**
+     * left
+     */
+    if (oldState.channelId && !newState.channelId) {
         const key = `voice-channel-joined-timestamp-${oldState.member.user.id}-${oldState.channelId}`
         const joinedAt = parseInt(cache.take(key))
 
@@ -41,58 +45,83 @@ const execute = async function (oldState, newState) {
         }
 
         await channel.send(text)
-    } else if (oldState.channelId === newState.channelId) {
-        /**
-         * remains
-         */
+        return null
+    }
+
+    /**
+     * remains
+     */
+    if (oldState.channelId === newState.channelId) {
         let text = `${builders.channelMention(newState.channelId)} :: ${builders.userMention(newState.member.user.id)} :: ${timeString}`
 
         if (!oldState.selfMute && newState.selfMute) {
             text = '🟡 ' + text + ' :: ' + builders.inlineCode('SelfMute ON')
             await channel.send(text)
             return
-        } else if (oldState.selfMute && !newState.selfMute) {
+        }
+
+        if (oldState.selfMute && !newState.selfMute) {
             text = '🟡 ' + text + ' :: ' + builders.inlineCode('SelfMute OFF')
             await channel.send(text)
             return
-        } else  if (!oldState.serverMute && newState.serverMute) {
+        }
+
+        if (!oldState.serverMute && newState.serverMute) {
             text = '🟧 ' + text + ' :: ' + builders.inlineCode('ServerMute ON')
             await channel.send(text)
             return
-        } else if (oldState.serverMute && !newState.serverMute) {
+        }
+
+        if (oldState.serverMute && !newState.serverMute) {
             text = '🟨 ' + text + ' :: ' + builders.inlineCode('ServerMute OFF')
             await channel.send(text)
             return
-        } else if (!oldState.selfDeaf && newState.selfDeaf) {
+        }
+
+        if (!oldState.selfDeaf && newState.selfDeaf) {
             text = '🟡 ' + text + ' :: ' + builders.inlineCode('SelfDeaf ON')
             await channel.send(text)
             return
-        } else if (oldState.selfDeaf && !newState.selfDeaf) {
+        }
+
+        if (oldState.selfDeaf && !newState.selfDeaf) {
             text = '🟡 ' + text + ' :: ' + builders.inlineCode('SelfDeaf OFF')
             await channel.send(text)
             return
-        } else  if (!oldState.serverDeaf && newState.serverDeaf) {
+        }
+
+        if (!oldState.serverDeaf && newState.serverDeaf) {
             text = '🟧 ' + text + ' :: ' + builders.inlineCode('ServerDeaf ON')
             await channel.send(text)
             return
-        } else if (oldState.serverDeaf && !newState.serverDeaf) {
+        }
+
+        if (oldState.serverDeaf && !newState.serverDeaf) {
             text = '🟨 ' + text + ' :: ' + builders.inlineCode('ServerDeaf OFF')
             await channel.send(text)
             return
-        } else if (!oldState.selfVideo && newState.selfVideo) {
+        }
+
+        if (!oldState.selfVideo && newState.selfVideo) {
             text = '🔵 ' + text + ' :: ' + builders.inlineCode('SelfVideo ON')
             await channel.send(text)
             return
-        } else if (oldState.selfVideo && !newState.selfVideo) {
+        }
+
+        if (oldState.selfVideo && !newState.selfVideo) {
             text = '🔵 ' + text + ' :: ' + builders.inlineCode('SelfVideo OFF')
             await channel.send(text)
             return
-        } else if (!oldState.streaming && newState.streaming) {
+        }
+
+        if (!oldState.streaming && newState.streaming) {
             text = '🟣 ' + text + ' :: ' + builders.inlineCode('Streaming ON')
             await channel.send(text)
             return
-        } else if (oldState.streaming && !newState.streaming) {
-            // TODO: may be a discord.js bug here...
+        }
+
+        // TODO: may be a discord.js bug here...
+        if (oldState.streaming && !newState.streaming) {
             text = '🟣 ' + text + ' :: ' + builders.inlineCode('Streaming OFF')
             await channel.send(text)
             return

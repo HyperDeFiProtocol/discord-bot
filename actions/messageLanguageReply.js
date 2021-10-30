@@ -20,7 +20,7 @@ module.exports = async function (message) {
     // no need to translate
     if (intendLang === targetLang) return;
 
-    // helper, mod...
+    // helper, mod, team
     const isHelper = await canSendAutoTranslate(message)
     if (isHelper) {
         const translation = await googleTranslate(text, targetLang)

@@ -35,6 +35,22 @@ const isGlobalChannel = function (channelId) {
         if (channelId === globalChannels[key] && key.length === 3) return key
     }
 
+    if (config['lang']) {
+        const engChannels = config['lang']['eng']
+        if (engChannels) {
+            for (const id of engChannels) {
+                if (id === channelId) return 'eng'
+            }
+        }
+
+        const cmnChannels = config['lang']['cmn']
+        if (cmnChannels) {
+            for (const id of cmnChannels) {
+                if (id === channelId) return 'cmn'
+            }
+        }
+    }
+
     return null
 }
 
@@ -122,6 +138,9 @@ const getGlobalChannelReply = async function (message, targetLang, intendLang) {
     if (isGlobalChannelLang(targetLang)) {
         text += '\n\n'
         switch (targetLang) {
+            case 'eng':
+                text += `Please do not use other languages in this room.`
+                break
             case 'cmn':
                 text += `请不要在此房间使用其它语言。`
                 break

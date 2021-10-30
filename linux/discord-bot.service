@@ -4,7 +4,8 @@ Description=Discord BOT
 [Service]
 ExecStart=/usr/bin/node /prod/discord-bot/index.js
 TimeoutSec=10
-Restart=always
+Restart=1
+RestartSec=3
 User=apodpm
 
 [Install]

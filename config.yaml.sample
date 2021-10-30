@@ -1,4 +1,4 @@
-debug: true
+debug: false
 clientId: "clientId"
 guildId: "guildId"
 token: "token"

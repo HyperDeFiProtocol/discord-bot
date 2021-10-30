@@ -1,5 +1,5 @@
-const {notifyChannels} = require('../utils/bot')
 const moment = require("moment")
+const {notifyChannels} = require('../utils/bot')
 
 module.exports = async function () {
     const channel = notifyChannels['bot']

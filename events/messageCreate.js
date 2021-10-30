@@ -1,6 +1,6 @@
 const messageLanguageReply = require('../actions/messageLanguageReply');
-const sendError = require('../actions/sendError');
 const messageTranslate = require('../actions/messageTranslate');
+const sendError = require('../actions/sendError');
 
 
 const execute = async function (message) {

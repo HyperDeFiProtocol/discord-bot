@@ -19,9 +19,13 @@ async function translate(text, targetLang) {
 
     if (!exist) return null;
 
-    const [translation] = await googleTranslate.translate(text, targetLang).catch(console.error);
+    const translation = await googleTranslate.translate(text, targetLang).catch(console.error);
 
-    return translation
+    if (translation) {
+        return translation[0]
+    }
+
+    return null
 }
 
 module.exports = translate

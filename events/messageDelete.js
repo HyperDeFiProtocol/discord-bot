@@ -5,6 +5,7 @@ const sendError = require('../actions/sendError');
 
 const execute = async function (message) {
     try {
+        if (!message.author) return;
         if (message.author.bot) return;
         if (!message.guild) return;
         if (debug) return console.log('>>> events/messageDelete')

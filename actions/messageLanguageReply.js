@@ -1,9 +1,12 @@
+const {debug} = require('../utils/bot')
 const fn = require('../utils/functions');
 const global = require('../functions/global');
 const canSendAutoTranslate = require('../functions/canSendAutoTranslate');
 const googleTranslate = require("./googleTranslate");
 
 module.exports = async function (message) {
+    if (debug) return console.log('>>> action/messageLanguageReply')
+
     if (global.isExceptChannel(message.channelId)) return;
 
     const text = message.content.trim()

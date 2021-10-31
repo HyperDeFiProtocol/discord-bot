@@ -1,25 +1,21 @@
-const {config} = require('../utils/bot')
+const {debug} = require('../utils/bot')
 const global = require('../functions/global')
 
 const googleTranslate = require('../actions/googleTranslate');
 
 const replyTranslateHelp = async function (message) {
     await message.reply('🟡 `!translate <language code>`\n\n' +
-        '**language code** could be one of these:\n' +
-        '`en`, `zh`, `ko`, `ja`,`fr`, `es`, `de`, `de`, `vi`')
+        '**<language code>** could be one of these:\n' +
+        '`en`, `zh`, `ko`, `ja`,`fr`, `de`, `es`, `ru`, `vi`')
 }
 
-
 module.exports = async function (message) {
-    if (config['debug']) {
-        console.log('>>> !translate')
-        return
-    }
+    if (debug) return console.log('>>> !translate')
 
-    const text = message.content.trim()
+    const msgText = message.content.trim().toLowerCase()
 
     if (message.reference) {
-        const commandOptions = text.replace(/\s{2,}/, ' ').split(' ')
+        const commandOptions = msgText.replace(/\s{2,}/, ' ').split(' ')
 
         if (commandOptions.length < 2) {
             await replyTranslateHelp(message)

@@ -1,5 +1,5 @@
 const builders = require('@discordjs/builders');
-const {config, debug, notifyChannels} = require('../utils/bot')
+const {config, debug, notifyChannels} = require('../utils/bot');
 const sendError = require('../actions/sendError');
 
 
@@ -7,7 +7,7 @@ const execute = async function (message) {
     try {
         if (message.author.bot) return;
         if (!message.guild) return;
-        if (debug) return;
+        if (debug) return console.log('>>> events/messageDelete')
 
         if (config['notifyChannels']['welcome'] && config['notifyChannels']['welcome'] === message.channelId) {
             console.log('deleted in welcome')

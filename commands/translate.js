@@ -1,9 +1,12 @@
 const {SlashCommandBuilder} = require('@discordjs/builders')
+const {debug} = require('../utils/bot')
 const fn = require('../utils/functions')
 const global = require('../functions/global')
-const translate = require('../actions/googleTranslate')
+const googleTranslate = require('../actions/googleTranslate')
 
 const execute = async function (interaction) {
+    if (debug) return console.log('>>> /translate')
+
     const language = interaction.options.getString('language').trim()
     const text = interaction.options.getString('text').trim()
     if (!text) {
@@ -26,7 +29,7 @@ const execute = async function (interaction) {
         return interaction.editReply(`🟡\nSame language: no need to translate... text:\n\n${text}`)
     }
 
-    const translation = await translate(text, targetLang)
+    const translation = await googleTranslate(text, targetLang)
     if (translation) {
         return interaction.editReply(`🟢\n${text}\n👇🏻👇🏻\n\n${translation}`)
     } else {

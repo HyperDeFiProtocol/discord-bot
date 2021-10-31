@@ -1,13 +1,12 @@
 const sendError = require('../actions/sendError');
 
 const execute = async function (interaction) {
-    if (!interaction.isCommand()) return
-
-    const command = interaction.client.commands.get(interaction.commandName)
-
-    if (!command) return
-
     try {
+        if (!interaction.isCommand()) return
+
+        const command = interaction.client.commands.get(interaction.commandName)
+        if (!command) return
+
         await interaction.deferReply()
         await command.execute(interaction)
     } catch (error) {

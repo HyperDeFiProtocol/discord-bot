@@ -3,16 +3,16 @@ const {debug, notifyChannels} = require('../utils/bot')
 const sendError = require('../actions/sendError');
 
 
-const execute = async function (guild) {
+const execute = async function (guildMember) {
     try {
-        if (debug) return
+        if (debug) return console.log('>>> events/guildBanAdd', guildMember.user.tag)
 
         const moderatorChannel = notifyChannels['moderator']
         if (!moderatorChannel) return
 
-        let text = `⛔️ ${builders.userMention(guild.user.id)} was ${builders.inlineCode('BANNED')}`
+        let text = `⛔️ ${builders.userMention(guildMember.user.id)} was ${builders.inlineCode('BANNED')}`
 
-        const fetchedLogs = await guild.guild.fetchAuditLogs({limit: 1, type: 'MEMBER_BAN_ADD'})
+        const fetchedLogs = await guildMember.guild.fetchAuditLogs({limit: 1, type: 'MEMBER_BAN_ADD'})
         const banLog = fetchedLogs.entries.first()
 
         if (!banLog) {
@@ -21,7 +21,7 @@ const execute = async function (guild) {
         }
         const {executor, target} = banLog;
 
-        if (target.id === guild.user.id) {
+        if (target.id === guildMember.user.id) {
             text += ` by ${builders.userMention(executor.id)}`
         }
 

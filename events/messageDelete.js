@@ -9,32 +9,29 @@ const execute = async function (message) {
     if (!message.guild) return;
 
     try {
-        if (config['debug']) return
+        // if (config['debug']) return
 
         const moderatorChannel = notifyChannels['moderator']
         if (!moderatorChannel) return
 
-        let text = `a message by ${builders.userMention(message.author.id)} in ${builders.channelMention(message.channelId)}`
+        let text = `❌ A message by ${builders.userMention(message.author.id)} in ${builders.channelMention(message.channelId)}`
+            + ` was ${builders.inlineCode('DELETED')} :: ${message.content}`
 
         await fn.wait()
         const deletionLogs = await message.guild.fetchAuditLogs({limit: 1, type: 'MESSAGE_DELETE'})
         const deletionLog = deletionLogs.entries.first()
         if (!deletionLog) {
-            text += ` was deleted`
-            await moderatorChannel.send(`❌ ${fn.titleCase(text)}`)
+            await moderatorChannel.send(text)
             return
         }
         const {executor, target} = deletionLog;
 
         if (target.id === message.author.id) {
-            text = `${builders.userMention(executor.id)} ${builders.inlineCode('DELETED')} ` + text
-        } else {
-            text += ` was ${builders.inlineCode('DELETED')}`
+            text += `\n\n`
+                + `executor: ${builders.userMention(executor.id)}`
         }
 
-        text += ` :: ${message.content}`
-
-        await moderatorChannel.send(`❌ ${fn.titleCase(text)}`)
+        await moderatorChannel.send(text)
     } catch (e) {
         await sendError(e)
     }

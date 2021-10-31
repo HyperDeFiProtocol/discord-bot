@@ -1,4 +1,14 @@
-const wait = function(timeout = 1000) {
+async function importFranc() {
+    const franc = await import('franc')
+    return franc.franc
+}
+
+async function importFrancAll() {
+    const franc = await import('franc')
+    return franc.francAll
+}
+
+const wait = function (timeout = 1000) {
     return new Promise((resolve, reject) => {
         if (timeout > 0) {
             setTimeout(() => {
@@ -10,18 +20,15 @@ const wait = function(timeout = 1000) {
     })
 }
 
-async function importFranc() {
-    const franc = await import('franc')
-    return franc.franc
+const titleCase = function (text) {
+    return text.slice(0, 1).toUpperCase() + text.slice(1)
 }
 
-async function importFrancAll() {
-    const franc = await import('franc')
-    return franc.francAll
-}
 
 module.exports = {
-    wait: wait,
     importFranc: importFranc,
     importFrancAll: importFrancAll,
+
+    wait: wait,
+    titleCase: titleCase,
 }

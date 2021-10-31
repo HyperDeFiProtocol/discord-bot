@@ -31,13 +31,13 @@ const client = new Client({
 // on ready
 const onReady = async function () {
     // notifyChannels
-    for (const channelId in config['notifyChannels']) {
-        notifyChannels[channelId] = client.channels.cache.get(config['notifyChannels'][channelId])
+    for (const key in config['notifyChannels']) {
+        notifyChannels[key] = client.channels.cache.get(config['notifyChannels'][key])
     }
 
     // globalChannels
-    for (const channelId in config['globalChannels']) {
-        globalChannels[channelId] = client.channels.cache.get(config['globalChannels'][channelId])
+    for (const key in config['globalChannels']) {
+        globalChannels[key] = client.channels.cache.get(config['globalChannels'][key])
     }
 }
 client.once('ready', onReady);

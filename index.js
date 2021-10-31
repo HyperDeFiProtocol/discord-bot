@@ -30,4 +30,5 @@ for (const file of fs.readdirSync('./commands').filter(file => file.endsWith('.j
     client.commands.set(command.data.name, command)
 }
 
+
 client.login(config.token)

@@ -1,12 +1,17 @@
-const cron = require('node-cron')
+const {debug} = require('../utils/bot')
 const onboard = require('../actions/onboard')
-const heartBeat = require('../actions/heartBeat')
+const heartBeat = require('../cron/heartBeat')
 
 
 const execute = async function (client) {
     await onboard(client)
 
-    cron.schedule('*/10 * * * *', heartBeat, {timezone: 'Asia/Singapore'});
+    if (debug) {
+        await heartBeat('* * * * *')
+    } else {
+        await heartBeat('*/10 * * * *')
+    }
+
 }
 
 module.exports = {

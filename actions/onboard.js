@@ -1,7 +1,6 @@
 const moment = require("moment")
 const {notifyChannels} = require('../utils/bot');
 
-
 module.exports = async function (client) {
     const timeString = moment().toString()
     console.log(`Logged in as ${client.user.tag} at ${timeString}`);

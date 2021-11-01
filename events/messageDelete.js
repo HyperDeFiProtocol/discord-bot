@@ -22,7 +22,8 @@ const execute = async function (message) {
             + ` in ${builders.channelMention(message.channelId)}`
             + ` was ${builders.inlineCode('DELETED')}`
         if (message.content) {
-            text += ` :: ${message.content}`
+            text += ` ::\n\n`
+                + message.content
         }
 
         const fetchedLogs = await message.guild.fetchAuditLogs({limit: 1, type: 'MESSAGE_DELETE'})

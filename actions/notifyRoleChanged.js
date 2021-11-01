@@ -2,8 +2,6 @@ const builders = require("@discordjs/builders");
 const {notifyChannels} = require('../utils/bot')
 
 const filterOutRoles = function (oldRoles, newRoles) {
-    // if (oldRoles.length === newRoles.length) return [[], []]
-
     let rolesAdded = []
     let rolesRemoved = []
     let rolesAddedTextArray = []

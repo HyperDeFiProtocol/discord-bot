@@ -57,7 +57,7 @@ const execute = async function (oldState, newState) {
             let text = `${builders.channelMention(newState.channelId)} :: ${builders.userMention(newState.member.user.id)} :: ${timeString}`
 
             if (!oldState.selfMute && newState.selfMute) {
-                text = '🟡 ' + text + ' :: ' + builders.inlineCode('SelfMute ON')
+                text = '🔇 ' + text + ' :: ' + builders.inlineCode('SelfMute ON')
                 await channel.send(text)
                 return
             }
@@ -69,7 +69,7 @@ const execute = async function (oldState, newState) {
             }
 
             if (!oldState.serverMute && newState.serverMute) {
-                text = '🟧 ' + text + ' :: ' + builders.inlineCode('ServerMute ON')
+                text = '🚫 ' + text + ' :: ' + builders.inlineCode('ServerMute ON')
                 await channel.send(text)
                 return
             }
@@ -81,7 +81,7 @@ const execute = async function (oldState, newState) {
             }
 
             if (!oldState.selfDeaf && newState.selfDeaf) {
-                text = '🟡 ' + text + ' :: ' + builders.inlineCode('SelfDeaf ON')
+                text = '🔇 ' + text + ' :: ' + builders.inlineCode('SelfDeaf ON')
                 await channel.send(text)
                 return
             }
@@ -93,7 +93,7 @@ const execute = async function (oldState, newState) {
             }
 
             if (!oldState.serverDeaf && newState.serverDeaf) {
-                text = '🟧 ' + text + ' :: ' + builders.inlineCode('ServerDeaf ON')
+                text = '🚫 ' + text + ' :: ' + builders.inlineCode('ServerDeaf ON')
                 await channel.send(text)
                 return
             }

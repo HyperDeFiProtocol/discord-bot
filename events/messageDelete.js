@@ -26,11 +26,14 @@ const execute = async function (message) {
         }
 
         const fetchedLogs = await message.guild.fetchAuditLogs({limit: 1, type: 'MESSAGE_DELETE'})
+        if (!fetchedLogs) return;
+
         const deletionLog = fetchedLogs.entries.first()
         if (!deletionLog) {
             await moderatorChannel.send(text)
             return
         }
+
         const {executor, target} = deletionLog;
         if (target.id === message.author.id) {
             text += `\n\n`

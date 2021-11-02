@@ -56,17 +56,17 @@ const execute = async function (oldState, newState) {
         if (oldState.channelId === newState.channelId) {
             let text = `${builders.channelMention(newState.channelId)} :: ${builders.userMention(newState.member.user.id)} :: ${timeString}`
 
-            if (!oldState.selfMute && newState.selfMute) {
-                text = '🔇 ' + text + ' :: ' + builders.inlineCode('SelfMute ON')
-                await channel.send(text)
-                return
-            }
-
-            if (oldState.selfMute && !newState.selfMute) {
-                text = '🟡 ' + text + ' :: ' + builders.inlineCode('SelfMute OFF')
-                await channel.send(text)
-                return
-            }
+            // if (!oldState.selfMute && newState.selfMute) {
+            //     text = '🔇 ' + text + ' :: ' + builders.inlineCode('SelfMute ON')
+            //     await channel.send(text)
+            //     return
+            // }
+            //
+            // if (oldState.selfMute && !newState.selfMute) {
+            //     text = '🟡 ' + text + ' :: ' + builders.inlineCode('SelfMute OFF')
+            //     await channel.send(text)
+            //     return
+            // }
 
             if (!oldState.serverMute && newState.serverMute) {
                 text = '🚫 ' + text + ' :: ' + builders.inlineCode('ServerMute ON')
@@ -80,17 +80,17 @@ const execute = async function (oldState, newState) {
                 return
             }
 
-            if (!oldState.selfDeaf && newState.selfDeaf) {
-                text = '🔇 ' + text + ' :: ' + builders.inlineCode('SelfDeaf ON')
-                await channel.send(text)
-                return
-            }
-
-            if (oldState.selfDeaf && !newState.selfDeaf) {
-                text = '🟡 ' + text + ' :: ' + builders.inlineCode('SelfDeaf OFF')
-                await channel.send(text)
-                return
-            }
+            // if (!oldState.selfDeaf && newState.selfDeaf) {
+            //     text = '🔇 ' + text + ' :: ' + builders.inlineCode('SelfDeaf ON')
+            //     await channel.send(text)
+            //     return
+            // }
+            //
+            // if (oldState.selfDeaf && !newState.selfDeaf) {
+            //     text = '🟡 ' + text + ' :: ' + builders.inlineCode('SelfDeaf OFF')
+            //     await channel.send(text)
+            //     return
+            // }
 
             if (!oldState.serverDeaf && newState.serverDeaf) {
                 text = '🚫 ' + text + ' :: ' + builders.inlineCode('ServerDeaf ON')

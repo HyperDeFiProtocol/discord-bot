@@ -8,13 +8,13 @@ module.exports = async function (reaction, user) {
 
     // match
     let reactionUser
-    let targetRole
-    [reactionUser, targetRole] = await reactionRulesAllMatched(reaction, user)
+    let agreedRole
+    let initRole
+    [reactionUser, agreedRole, initRole] = await reactionRulesAllMatched(reaction, user)
 
     if (!reactionUser) return;
-
-    // add role
-    await reactionUser.roles.add(targetRole, 'Rules Agreed')
+    if (agreedRole) await reactionUser.roles.add(agreedRole, 'Rules Agreed')
+    if (initRole) await reactionUser.roles.remove(initRole, 'Rules Agreed')
 
     // notify to moderator channel
     const moderatorChannel = notifyChannels['moderator']

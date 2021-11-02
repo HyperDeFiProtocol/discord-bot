@@ -36,22 +36,25 @@ const isRulesAgreeEmoji = function (emoji) {
 
 module.exports = async function (reaction, user) {
     // with emoji
-    if (!reaction.emoji) return [null, null]
+    if (!reaction.emoji) return [null, null, null]
 
     // role exist
-    if (!config['roles']) return [null, null]
-    const roleId = config['roles']['rulesAgreed']
-    if (!roleId) return [null, null]
+    if (!config['roles']) return [null, null, null]
+    const agreeRoleId = config['roles']['rulesAgreed']
+    if (!agreeRoleId) return [null, null, null]
 
     // correct channel, message, emoji
-    if (!isFromRulesChannel(reaction.message.channelId)) return [null, null]
-    if (!isToRulesMessage(reaction.message.id)) return [null, null]
-    if (!isRulesAgreeEmoji(reaction.emoji.name)) return [null, null]
+    if (!isFromRulesChannel(reaction.message.channelId)) return [null, null, null]
+    if (!isToRulesMessage(reaction.message.id)) return [null, null, null]
+    if (!isRulesAgreeEmoji(reaction.emoji.name)) return [null, null, null]
 
     // guild, role, user
     const guild = await client.guilds.cache.get(config['guildId'])
-    const targetRole = await guild.roles.cache.get(roleId)
+    const agreedRole = await guild.roles.cache.get(agreeRoleId)
+    let initRole;
+    if (config['roles']['locked']) initRole = await guild.roles.cache.get(config['roles']['locked'])
+
     const reactionUser = await guild.members.cache.get(user.id)
 
-    return [reactionUser, targetRole]
+    return [reactionUser, agreedRole, initRole]
 }

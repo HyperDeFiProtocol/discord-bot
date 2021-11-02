@@ -12,13 +12,17 @@ module.exports = async function (reaction, user) {
     let initRole
     [reactionUser, agreedRole, initRole] = await reactionRulesAllMatched(reaction, user)
 
+    // reaction matched
     if (!reactionUser) return;
-    if (agreedRole) await reactionUser.roles.add(agreedRole, 'Rules Agreed')
-    if (initRole) await reactionUser.roles.remove(initRole, 'Rules Agreed')
 
     // notify to moderator channel
     const moderatorChannel = notifyChannels['moderator']
-    if (!moderatorChannel) return;
-    await moderatorChannel.send(`${reaction.emoji.name} ${reactionUser}`
-        + ` ${builders.inlineCode('AGREED')} with the ${builders.channelMention(reaction.message.channelId)}`)
+    if (moderatorChannel) {
+        await moderatorChannel.send(`${reaction.emoji.name} ${reactionUser}`
+            + ` ${builders.inlineCode('AGREED')} with the ${builders.channelMention(reaction.message.channelId)}`)
+    }
+
+    // add and remove roles
+    if (agreedRole) await reactionUser.roles.add(agreedRole, 'Rules Agreed')
+    if (initRole) await reactionUser.roles.remove(initRole, 'Rules Agreed')
 }

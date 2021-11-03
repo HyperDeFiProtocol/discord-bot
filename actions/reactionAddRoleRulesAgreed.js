@@ -22,7 +22,7 @@ module.exports = async function (reaction, user) {
             + ` ${builders.inlineCode('AGREED')} with the ${builders.channelMention(reaction.message.channelId)}`)
     }
 
-    // add and remove roles
-    if (agreedRole) await reactionUser.roles.add(agreedRole, 'Rules Agreed')
+    // remove and add roles
     if (initRole) await reactionUser.roles.remove(initRole, 'Rules Agreed')
+    if (agreedRole) await reactionUser.roles.add(agreedRole, 'Rules Agreed')
 }

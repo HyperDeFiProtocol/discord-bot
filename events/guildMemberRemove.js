@@ -1,11 +1,15 @@
 const builders = require('@discordjs/builders');
 const {config, debug, notifyChannels} = require('../utils/bot')
 const notifyError = require('../actions/notifyError');
+const countMembers = require("../actions/countMembers");
+
 
 
 const execute = async function (guildMember) {
     try {
         if (guildMember.guild.id !== config['guildId']) return;
+        await countMembers()
+
         if (debug) return console.log('>>> events/guildMemberRemove', guildMember.user.tag)
 
         const moderatorChannel = notifyChannels['moderator']

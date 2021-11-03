@@ -85,7 +85,7 @@ module.exports = async function (user) {
                     y: 0,
                     fontSize: layerUserId['fontSize'] || 19,
                     anchor: 'top',
-                    attributes: {fill: layerUserId['color'] || '#71717A'}
+                    attributes: {fill: layerUserId['color'] || '#A1A1AA'}
                 }
             )
 
@@ -108,7 +108,7 @@ module.exports = async function (user) {
                     y: 0,
                     fontSize: layerTimestamp['fontSize'] || 19,
                     anchor: 'top',
-                    attributes: {fill: layerTimestamp['color'] || '#71717A'}
+                    attributes: {fill: layerTimestamp['color'] || '#A1A1AA'}
                 }
             )
 

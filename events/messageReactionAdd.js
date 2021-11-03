@@ -1,5 +1,5 @@
 const {config} = require('../utils/bot')
-const sendError = require('../actions/sendError');
+const notifyError = require('../actions/notifyError');
 const reactionAddRoleRulesAgreed = require('../actions/reactionAddRoleRulesAgreed')
 
 
@@ -11,7 +11,7 @@ const execute = async function (reaction, user) {
 
         await reactionAddRoleRulesAgreed(reaction, user)
     } catch (e) {
-        await sendError(e)
+        await notifyError(e)
     }
 }
 

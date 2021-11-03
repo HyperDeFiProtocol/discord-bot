@@ -1,4 +1,4 @@
-const sendError = require('../actions/sendError');
+const notifyError = require('../actions/notifyError');
 
 const execute = async function (interaction) {
     try {
@@ -15,7 +15,7 @@ const execute = async function (interaction) {
             ephemeral: true
         })
 
-        await sendError(error)
+        await notifyError(error)
     }
 }
 

@@ -1,11 +1,11 @@
 const {config, debug, client} = require("../utils/bot");
-const sendError = require("../actions/sendError");
+const sendError = require("./notifyError");
 
 
 module.exports = async function (guildMember) {
     try {
         if (guildMember.guild.id !== config['guildId']) return;
-        // if (debug) return console.log('>>> events/guildMemberAdd')
+        if (debug) return;
 
         // role exist
         if (!config['roles']) return;

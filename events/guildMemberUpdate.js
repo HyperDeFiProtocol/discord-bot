@@ -1,6 +1,6 @@
 const {debug} = require('../utils/bot')
 const notifyRoleChanged = require('../actions/notifyRoleChanged');
-const sendError = require('../actions/sendError');
+const notifyError = require('../actions/notifyError');
 
 
 const execute = async function (oldMember, newMember) {
@@ -9,7 +9,7 @@ const execute = async function (oldMember, newMember) {
 
         await notifyRoleChanged(oldMember, newMember)
     } catch (e) {
-        await sendError(e)
+        await notifyError(e)
     }
 }
 

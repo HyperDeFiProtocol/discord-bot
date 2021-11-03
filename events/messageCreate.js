@@ -1,7 +1,7 @@
 const {debug} = require('../utils/bot')
 const messageLanguageReply = require('../actions/messageLanguageReply');
 const messageTranslate = require('../actions/messageTranslate');
-const sendError = require('../actions/sendError');
+const notifyError = require('../actions/notifyError');
 
 
 const execute = async function (message) {
@@ -17,7 +17,7 @@ const execute = async function (message) {
 
         await messageLanguageReply(message)
     } catch (e) {
-        await sendError(e)
+        await notifyError(e)
     }
 }
 

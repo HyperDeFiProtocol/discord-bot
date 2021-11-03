@@ -1,7 +1,7 @@
 const moment = require("moment");
 const builders = require('@discordjs/builders');
 const {debug, cache, notifyChannels} = require('../utils/bot');
-const sendError = require('../actions/sendError');
+const notifyError = require('../actions/notifyError');
 
 const execute = async function (oldState, newState) {
     try {
@@ -135,7 +135,7 @@ const execute = async function (oldState, newState) {
             // console.log('>>> newState:', newState)
         }
     } catch (e) {
-        await sendError(e)
+        await notifyError(e)
     }
 }
 

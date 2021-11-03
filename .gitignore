@@ -2,6 +2,11 @@ config.yaml
 google.application.credentials.json
 debug/
 
+assets/fonts/*
+assets/images/*
+!assets/fonts/.gitkeep
+!assets/images/.gitkeep
+
 .idea/
 
 # Logs

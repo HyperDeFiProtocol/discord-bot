@@ -1,13 +1,14 @@
 const builders = require('@discordjs/builders');
 const {config, debug, notifyChannels} = require('../utils/bot')
-const sendError = require('../actions/sendError');
+const notifyError = require('../actions/notifyError');
 const giveLockedRoleToNewMember = require('../actions/giveLockedRoleToNewMember');
-
+const notifyWelcomePic = require('../actions/notifyWelcomePic')
 
 const execute = async function (guildMember) {
     try {
         if (guildMember.guild.id !== config['guildId']) return;
-        if (debug) return console.log('>>> events/guildMemberAdd')
+        // if (debug) return console.log('>>> events/guildMemberAdd')
+        console.log('>>> events/guildMemberAdd')
 
         const moderatorChannel = notifyChannels['moderator']
         if (moderatorChannel) {
@@ -16,9 +17,14 @@ const execute = async function (guildMember) {
             await moderatorChannel.send(text)
         }
 
+
+        await notifyWelcomePic(guildMember.user)
+
+        // console.log(guildMember.user.displayAvatarURL())
+
         await giveLockedRoleToNewMember(guildMember)
     } catch (e) {
-        await sendError(e)
+        await notifyError(e)
     }
 }
 

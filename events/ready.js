@@ -9,12 +9,11 @@ const execute = async function (client) {
     try {
         await onboard(client)
         await countMembers()
+        await heartBeat('* * * * *')
 
-        if (debug) {
-            await heartBeat('* * * * *')
-        } else {
-            await heartBeat('*/10 * * * *')
-        }
+        // if (debug) {
+        //     //
+        // }
     } catch (e) {
         await notifyError(e)
     }

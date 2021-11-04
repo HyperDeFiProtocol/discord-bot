@@ -11,7 +11,6 @@ const execute = async function (guildMember) {
         await countMembers()
 
         if (debug) return console.log('>>> events/guildMemberAdd')
-        // console.log('>>> events/guildMemberAdd')
 
         const moderatorChannel = notifyChannels['moderator']
         if (moderatorChannel) {

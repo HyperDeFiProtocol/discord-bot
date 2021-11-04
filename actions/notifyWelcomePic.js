@@ -46,7 +46,7 @@ module.exports = async function (user) {
         sharpLayers.push({
             input: avatar,
             left: welcomeLayers['avatar']['x'] || 543,
-            top: welcomeLayers['avatar']['y'] || 40,
+            top: welcomeLayers['avatar']['y'] || 75,
         })
     }
 

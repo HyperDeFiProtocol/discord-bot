@@ -5,11 +5,6 @@ const {client} = require('./utils/bot');
 const config = require('./utils/config');
 
 
-// google.application.credentials
-//
-process.env.GOOGLE_APPLICATION_CREDENTIALS = path.join(path.resolve(), 'google.application.credentials.json')
-
-
 // events
 //
 for (const file of fs.readdirSync('./events').filter(file => file.endsWith('.js'))) {

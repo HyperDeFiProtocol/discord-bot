@@ -2,10 +2,16 @@ const {debug} = require('../utils/bot');
 const onboard = require('../actions/onboard');
 const countMembers = require('../actions/countMembers');
 const heartBeat = require('../cron/heartBeat');
-const notifyError = require('../actions/notifyError');
+const {sendError} = require('../actions/notify');
 
 
 const execute = async function (client) {
+    try {
+        //
+    } catch (e) {
+        await sendError(e)
+    }
+
     try {
         await onboard(client)
         await countMembers()
@@ -15,7 +21,7 @@ const execute = async function (client) {
         //     //
         // }
     } catch (e) {
-        await notifyError(e)
+        await sendError(e)
     }
 }
 

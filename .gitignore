@@ -1,5 +1,4 @@
 config.yaml
-google.application.credentials.json
 debug/
 
 assets/fonts/*

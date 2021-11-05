@@ -1,5 +1,5 @@
 const {config, debug, client} = require("../utils/bot");
-const notifyError = require("./notifyError");
+const {sendError} = require('../actions/notify');
 
 
 module.exports = async function (guildMember) {
@@ -19,6 +19,6 @@ module.exports = async function (guildMember) {
         // add role
         await targetUser.roles.add(targetRole, 'New member, locked')
     } catch (e) {
-        await notifyError(e)
+        await sendError(e)
     }
 }

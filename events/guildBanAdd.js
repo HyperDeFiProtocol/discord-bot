@@ -1,6 +1,6 @@
 const builders = require('@discordjs/builders');
 const {debug, notifyChannels} = require('../utils/bot')
-const notifyError = require('../actions/notifyError');
+const {sendError} = require("../actions/notify");
 
 
 const execute = async function (guildMember) {
@@ -31,7 +31,7 @@ const execute = async function (guildMember) {
 
         await moderatorChannel.send(text)
     } catch (e) {
-        await notifyError(e)
+        await sendError(e)
     }
 }
 

@@ -1,6 +1,6 @@
 const {config} = require('../utils/bot')
-const notifyError = require('../actions/notifyError');
 const reactionAddRoleRulesDisagreed = require('../actions/reactionAddRoleRulesDisagreed')
+const {sendError} = require("../actions/notify");
 
 
 const execute = async function (reaction, user) {
@@ -11,8 +11,9 @@ const execute = async function (reaction, user) {
 
         await reactionAddRoleRulesDisagreed(reaction, user)
     } catch (e) {
-        await notifyError(e)
+        await sendError(e)
     }
+
 }
 
 module.exports = {

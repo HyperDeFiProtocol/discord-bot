@@ -16,7 +16,6 @@ const execute = async function (oldState, newState) {
         /**
          * join
          */
-
         if (!oldState.channelId && newState.channelId) {
             const key = `voice-channel-joined-timestamp-${newState.member.user.id}-${newState.channelId}`
             cache.set(key, new Date().getTime())

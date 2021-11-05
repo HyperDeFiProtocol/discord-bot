@@ -6,7 +6,7 @@ const execute = async function (message) {
     try {
         if (!message.author) return;
         if (message.author.bot) return;
-        if (debug) return console.log('>>> events/messageCreate')
+        if (debug) console.log('>>> events/messageCreate')
     } catch (e) {
         await sendError(e)
     }

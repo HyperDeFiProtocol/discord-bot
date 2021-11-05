@@ -5,7 +5,7 @@ const {sendError} = require("../actions/notify");
 
 const execute = async function (guildMember) {
     try {
-        if (debug) return console.log('>>> events/guildBanAdd', guildMember.user.tag)
+        if (debug) console.log('>>> events/guildBanAdd', guildMember.user.tag)
 
         const moderatorChannel = notifyChannels['moderator']
         if (!moderatorChannel) return

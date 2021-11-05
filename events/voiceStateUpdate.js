@@ -6,7 +6,7 @@ const {sendError} = require("../actions/notify");
 
 const execute = async function (oldState, newState) {
     try {
-        if (debug) return console.log('>>> events/voiceStateUpdate')
+        if (debug) console.log('>>> events/voiceStateUpdate')
 
         const channel = notifyChannels['voice']
         if (!channel) return;

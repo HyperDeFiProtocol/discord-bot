@@ -7,18 +7,10 @@
   "dependencies": {
     "@discordjs/builders": "^0.7.0",
     "@discordjs/rest": "^0.1.0-canary.0",
-    "axios": "^0.24.0",
-    "commander": "^8.3.0",
-    "crypto": "^1.0.1",
     "discord.js": "^13.2.0",
-    "franc": "^6.0.0",
-    "langs": "^2.0.0",
     "moment": "^2.29.1",
     "node-cache": "^5.1.2",
     "node-cron": "^3.0.0",
-    "sharp": "^0.29.2",
-    "text-to-svg": "^3.1.5",
-    "winston": "^3.3.3",
     "yaml": "^1.10.2"
   }
 }

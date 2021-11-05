@@ -8,7 +8,7 @@ const execute = async function (message) {
         if (!message.author) return;
         if (message.author.bot) return;
         if (!message.guild) return;
-        if (debug) return console.log('>>> events/messageDelete')
+        if (debug) console.log('>>> events/messageDelete')
 
         if (config['notifyChannels']['welcome'] && config['notifyChannels']['welcome'] === message.channelId) {
             console.log('deleted in welcome')

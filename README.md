@@ -48,7 +48,7 @@ They can work anywhere
 
 ![Welcome Card](https://github.com/HyperDeFiProtocol/discord-bot/blob/main/docs/welcome-card.jpg?raw=true)
 
-You can use your own template image, the bot will put the avatar, username, user id, and joined time on it.
+You can use your own template image and fonts, the bot will put the avatar, username, user id, and joined time on it.
 
 #### Locked role
 
@@ -72,19 +72,9 @@ User who has a `Unlocked` role, can see all the channels you allowed before, and
 
 ------
 
-## Ubuntu
+## How to use...?
 
-- Ubuntu 20.04 LTS
-- Node v17+
-- yarn
-
-## Install
-
-```bash
-git clone https://github.com/HyperDeFiProtocol/discord-bot.git
-```
-
-## Invite a bot to your server (guild)
+### Create your bot, and invite it to your server (guild)
 
 Create an application at [Discord Developer Portal](https://discord.com/developers/applications)
 
@@ -93,7 +83,58 @@ Nav to `BOT` and select `PRESENCE INTENT`, `SERVER MEMBERS INTENT`, `MESSAGE CON
 Nav to `OAuth2`, select `bot` and `applications.commands` in `SCOPES`, select `Administrator` in `BOT PERMISSIONS` then
 copy the URL, visit in your browser, invite the bot to your server.
 
-## Google Translate
+
+### Prepare your environment
+
+- Linux / Mac OS / Linux
+- Install the latest [Node.js](https://nodejs.org/en/), just download and install
+- And [Yarn - Package Manager](https://yarnpkg.com/) is recommended, also quite easy with only one command
+
+
+### Download the repo
+
+`git clone`
+
+```bash
+# Welcome BOT
+$ git clone https://github.com/HyperDeFiProtocol/discord-welcome-bot.git
+
+# Translate BOT
+$ git clone https://github.com/HyperDeFiProtocol/discord-translate-bot.git
+```
+
+or even download and extract to a new folder
+
+
+### For welcome BOT: save your fonts and welcome card template image file
+
+- fonts to `./assets/fonts`
+- template image file to `./assets/images`
+
+### For translate BOT: get your Google application credentials file
 
 Follow the steps [@google-cloud/translate](https://github.com/googleapis/nodejs-translate#before-you-begin), to create
 a `credentials file`, rename it as `google.application.credentials.json` and put it in `./`
+
+### Config
+
+- Edit the `./config.yaml` file, fill the items
+
+### Run it
+
+```bash
+$ node index.js
+```
+
+### Leave, it will keep working for you
+
+
+## Development
+
+Build with [discord.js](https://discord.js.org/#/), feel free to make your contributions to us.
+
+- [discord.js Guide](https://discordjs.guide/#before-you-begin)
+- [discord.js Documentation](https://discord.js.org/#/docs/)
+- [discord developer portal](https://discord.com/developers/applications)
+- [discord official documentation](https://discord.com/developers/docs/intro)
+

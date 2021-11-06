@@ -43,13 +43,24 @@ They can work anywhere
 
 ### Welcome BOT
 
+
+#### Welcome card
+
+![Welcome Card](https://github.com/HyperDeFiProtocol/discord-bot/blob/main/docs/welcome-card.jpg?raw=true)
+
+You can use your own template image, the bot will put the avatar, username, user id, and joined time on it.
+
 #### Locked role
 
 ![Locked Role](https://github.com/HyperDeFiProtocol/discord-bot/blob/main/docs/locked.png?raw=true)
 
+User with default `Locked` role, can only see some channels, and cannot send message to them.
+
 #### React to rule message
 
 ![Rules](https://github.com/HyperDeFiProtocol/discord-bot/blob/main/docs/rules.png?raw=true)
+
+React with the right emoji, then get the `Unlocked` role, in our HyperDeFi Server, it's called `HyperFAM`...
 
 #### Unlocked role
 
@@ -57,6 +68,7 @@ For us, it called `HyperFAM`
 
 ![Unlocked Role](https://github.com/HyperDeFiProtocol/discord-bot/blob/main/docs/unlocked.png?raw=true)
 
+User who has a `Unlocked` role, can see all the channels you allowed before, and they can chat there.
 
 ------
 
